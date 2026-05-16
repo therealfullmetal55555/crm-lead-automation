@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lead Dossier — CRM</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #f4f1eb; color: #1a1a18; font-family: Georgia, serif; }
+.mono { font-family: ui-monospace, SFMono-Regular, monospace; }
+.top { border-bottom: 1px solid #1a1a18; padding: 14px 24px; display: flex; justify-content: space-between; font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 32px 24px 80px; display: grid; grid-template-columns: 1fr 380px; gap: 32px; }
+h1 { font-size: 48px; line-height: 0.9; letter-spacing: -0.03em; font-weight: 400; }
+h1 i { font-style: italic; }
+.sub { font-size: 14px; line-height: 1.5; color: #6b6b60; margin-top: 12px; font-family: -apple-system, sans-serif; max-width: 420px; }
+.form-card { background: #ffffff; border: 1px solid #1a1a18; border-radius: 0; padding: 24px; margin-top: 24px; box-shadow: 6px 6px 0 #1a1a18; }
+.label { font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; margin: 18px 0 6px; display: block; }
+.label:first-child { margin-top: 0; }
+input, textarea, select { width: 100%; padding: 10px 12px; border: 1px solid #d6d2c7; border-radius: 0; font-size: 14px; font-family: -apple-system, sans-serif; background: #fcfbF8; }
+input:focus, textarea:focus { outline: none; border-color: #1a1a18; background: #fff; }
+textarea { min-height: 100px; resize: vertical; }
+.btn { width: 100%; margin-top: 20px; background: #1a1a18; color: #f4f1eb; border: 1px solid #1a1a18; padding: 12px; font-family: ui-monospace, monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; }
+.btn:hover { background: #2a2a26; }
+.examples { margin-top: 20px; border-top: 1px dashed #d6d2c7; padding-top: 16px; }
+.examples b { font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; }
+.ex-grid { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.ex { font-size: 11px; padding: 6px 10px; border: 1px solid #d6d2c7; background: #fcfbf8; cursor: pointer; font-family: -apple-system, sans-serif; }
+.ex:hover { border-color: #1a1a18; }
+.right { position: sticky; top: 24px; }
+.dossier { background: #ffffff; border: 1px solid #1a1a18; padding: 0; }
+.dossier-head { background: #1a1a18; color: #f4f1eb; padding: 12px 16px; font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em; display: flex; justify-content: space-between; }
+.result { padding: 16px; font-size: 13px; line-height: 1.5; font-family: -apple-system, sans-serif; display: none; }
+.result.show { display: block; }
+.result .line { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid #f0ece2; font-size: 12px; }
+.result .line:last-child { border-bottom: none; }
+.result .line span:first-child { font-family: ui-monospace, monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #8a867e; }
+.stamp { display: inline-block; border: 2px solid #c2410c; color: #c2410c; padding: 4px 10px; font-family: ui-monospace, monospace; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; transform: rotate(-4deg); margin: 12px 0; }
+.features { margin-top: 24px; font-size: 11px; line-height: 1.5; color: #6b6b60; font-family: ui-monospace, monospace; }
+.features div { padding: 8px 0; border-bottom: 1px solid #e8e2d6; display: flex; gap: 8px; }
+.features b { color: #1a1a18; }
+@media (max-width: 900px) { .wrap { grid-template-columns: 1fr; } .right { position: static; } }
+</style>
+</head>
+<body>
+<div class="top"><div>Project 06 / CRM Automation / HubSpot + Sol</div><div class="mono">10 leads • 7 deals • Deduplication</div></div>
+<div class="wrap">
+  <div>
+    <h1>Lead <i>dossier</i> —<br>auto-qualified</h1>
+    <p class="sub">Not just forwarded to manager as-is. Classified by intent, priority, budget, urgency. Spam filtered. Same email → update, not duplicate. Anti-hallucination: null if not mentioned.</p>
+    
+    <div class="form-card">
+      <form id="leadForm">
+        <label class="label">Name / Company</label>
+        <input type="text" id="name" name="name" required placeholder="Anna Schmidt — Berlin Startup">
+        <label class="label">Email</label>
+        <input type="email" id="email" name="email" required placeholder="anna@company.com">
+        <label class="label">Phone — optional</label>
+        <input type="text" id="phone" name="phone" placeholder="+49 30 ...">
+        <label class="label">Message — what they actually wrote</label>
+        <textarea id="message" name="message" required placeholder="We need WhatsApp automation, budget 5000 EUR, need it ASAP..."></textarea>
+        <label class="label">Source</label>
+        <select name="source"><option value="web_form">Web form</option><option value="telegram">Telegram</option><option value="api">API</option></select>
+        <button type="submit" class="btn" id="submitBtn">Qualify and push to CRM →</button>
+      </form>
+
+      <div class="examples">
+        <b>Try real examples — click to fill</b>
+        <div class="ex-grid">
+          <button class="ex" onclick="fillExample('high')">High-intent 5000€ ASAP</button>
+          <button class="ex" onclick="fillExample('question')">Product question</button>
+          <button class="ex" onclick="fillExample('complaint')">Complaint — high</button>
+          <button class="ex" onclick="fillExample('spam')">Spam — no deal</button>
+          <button class="ex" onclick="fillExample('notalead')">Not a lead</button>
+          <button class="ex" onclick="fillExample('duplicate')">Duplicate email</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="dossier">
+      <div class="dossier-head"><span>Live qualification</span><span class="mono">Mock CRM</span></div>
+      <div id="result" class="result">
+        <div style="color:#6b6b60; font-size:12px;">Submit a lead to see classification. Try examples on left.</div>
+        <div class="features">
+          <div><b>01</b> Anti-hallucination — budget=null if not mentioned</div>
+          <div><b>02</b> Deduplication — same email → update contact</div>
+          <div><b>03</b> Spam filter — spam & test → no deal</div>
+          <div><b>04</b> Structured — Pydantic intent/priority/budget/urgency</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; padding:12px; border:1px dashed #d6d2c7; font-size:11px; font-family:ui-monospace,monospace; color:#8a867e; line-height:1.5;">
+      Mock CRM works without API keys.<br>
+      Real HubSpot if HUBSPOT_API_KEY set.<br>
+      Telegram notification if configured.<br><br>
+      Test: python run_tests.py → ALL CRITERIA PASSED
+    </div>
+  </div>
+</div>
+
+<script>
+const examples={
+  high:{name:"Anna Schmidt",email:"anna@berlin-startup.de",phone:"+49 30 123456",message:"Hi, we need WhatsApp automation for our beauty salon chain (5 locations). What's your pricing? We have budget 5000 EUR and need it ASAP this week. Can you handle German language?"},
+  question:{name:"Mark Johnson",email:"mark@clinic-uk.co.uk",phone:"+44 20 7123 4567",message:"Hello, do you support integration with Google Calendar for appointment booking? We are a dental clinic in London. How does the WhatsApp confirmation work?"},
+  complaint:{name:"Sophie Laurent",email:"sophie@salon-paris.fr",phone:"+33 1 23 45 67 89",message:"I'm disappointed - our current bot is not working properly, clients complain about wrong timezone. We need a reliable solution urgently, can you help? This is critical for us."},
+  spam:{name:"Crypto Promo",email:"promo@spam-crypto.biz",phone:"",message:"Buy followers cheap! Make money fast with crypto investment! Click here https://spam.com guaranteed traffic!!!"},
+  notalead:{name:"Test User",email:"test@test.com",phone:"",message:"Hello, just saying hi, checking if this form works"},
+  duplicate:{name:"Anna Schmidt",email:"anna@berlin-startup.de",phone:"+49 30 123456",message:"Follow-up: same email as before, but now budget is 7000 EUR and we also need voice AI receptionist. Can you update our previous inquiry?"}
+};
+function fillExample(k){ const ex=examples[k]; document.getElementById('name').value=ex.name; document.getElementById('email').value=ex.email; document.getElementById('phone').value=ex.phone; document.getElementById('message').value=ex.message; }
+document.getElementById('leadForm').addEventListener('submit', async (e)=>{
+  e.preventDefault();
+  const btn=document.getElementById('submitBtn'); const resultDiv=document.getElementById('result');
+  btn.textContent='Qualifying…'; btn.disabled=true;
+  resultDiv.classList.add('show'); resultDiv.innerHTML='<div style="font-family:ui-monospace,monospace; font-size:11px; text-transform:uppercase; letter-spacing:0.08em; color:#8a867e;">Processing… classifying & pushing to CRM</div>';
+  const formData=new FormData(e.target);
+  try{
+    const resp=await fetch('/api/lead',{method:'POST',body:formData}); const data=await resp.json();
+    if(resp.ok){
+      const c=data.classification;
+      const isFiltered=!data.crm.deal_id;
+      resultDiv.innerHTML=`
+        ${isFiltered?'<div class="stamp">Filtered — No Deal</div>':'<div class="stamp" style="border-color:#15803d; color:#15803d;">Deal Created</div>'}
+        <div style="font-size:14px; font-weight:600; margin-bottom:12px;">${data.message}</div>
+        <div class="line"><span>Intent</span><span><b>${c.intent}</b> • ${c.priority}</span></div>
+        <div class="line"><span>Spam</span><span>${c.is_spam?'Yes — filtered':'No'}</span></div>
+        <div class="line"><span>Budget</span><span>${c.budget_mentioned||'null (not mentioned)'} ${c.budget_currency||''}</span></div>
+        <div class="line"><span>Urgency</span><span>${c.urgency||'null'}</span></div>
+        <div class="line"><span>Summary</span><span style="max-width:200px; text-align:right;">${c.summary}</span></div>
+        <div style="margin-top:12px; padding-top:12px; border-top:1px solid #1a1a18;">
+          <div class="line"><span>Contact</span><span>${data.crm.contact_id} • ${data.crm.mock?'Mock':'HubSpot'}</span></div>
+          <div class="line"><span>Deal</span><span>${data.crm.deal_id||'NOT created'}</span></div>
+        </div>
+        <div style="margin-top:12px; font-family:ui-monospace,monospace; font-size:10px; color:#8a867e;">Lead ID: ${data.lead_id} • Reasoning: ${c.reasoning}</div>
+      `;
+    } else { resultDiv.innerHTML=`<div style="color:#b91c1c;">Error: ${JSON.stringify(data.detail)}</div>`; }
+  } catch(err){ resultDiv.innerHTML=`<div style="color:#b91c1c;">${err.message}</div>`; }
+  finally{ btn.textContent='Qualify and push to CRM →'; btn.disabled=false; }
+});
+</script>
+</body>
+</html>

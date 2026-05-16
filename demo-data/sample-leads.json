@@ -1,0 +1,115 @@
+[
+  {
+    "id": 1,
+    "name": "Anna Schmidt",
+    "email": "anna@berlin-startup.de",
+    "phone": "+49 30 123456",
+    "message": "Hi, we need WhatsApp automation for our beauty salon chain (5 locations). What's your pricing? We have budget 5000 EUR and need it ASAP this week. Can you handle German language?",
+    "expected_intent": "pricing_request",
+    "expected_priority": "high",
+    "expected_budget": 5000,
+    "expected_currency": "EUR",
+    "should_create_deal": true,
+    "notes": "High-intent, clear budget, urgency ASAP, German market - ideal lead"
+  },
+  {
+    "id": 2,
+    "name": "Mark Johnson",
+    "email": "mark@clinic-uk.co.uk",
+    "phone": "+44 20 7123 4567",
+    "message": "Hello, do you support integration with Google Calendar for appointment booking? We are a dental clinic in London. How does the WhatsApp confirmation work?",
+    "expected_intent": "product_question",
+    "expected_priority": "medium",
+    "expected_budget": null,
+    "should_create_deal": true,
+    "notes": "Product question, no budget mentioned - should be null, not hallucinated"
+  },
+  {
+    "id": 3,
+    "name": "Sophie Laurent",
+    "email": "sophie@salon-paris.fr",
+    "phone": "+33 1 23 45 67 89",
+    "message": "I'm disappointed - our current bot is not working properly, clients complain about wrong timezone. We need a reliable solution urgently, can you help? This is critical for us.",
+    "expected_intent": "complaint",
+    "expected_priority": "high",
+    "should_create_deal": true,
+    "notes": "Complaint - high priority to handle, even without budget"
+  },
+  {
+    "id": 4,
+    "name": "Crypto Promo",
+    "email": "promo@spam-crypto.biz",
+    "message": "Buy followers cheap! Make money fast with crypto investment! Click here https://spam.com guaranteed traffic!!!",
+    "expected_intent": "spam",
+    "expected_priority": "low",
+    "should_create_deal": false,
+    "notes": "SPAM - must be filtered, no deal created. Critical test for anti-spam."
+  },
+  {
+    "id": 5,
+    "name": "Test User",
+    "email": "test@test.com",
+    "message": "Hello, just saying hi, checking if this form works",
+    "expected_intent": "not_a_lead",
+    "expected_priority": "low",
+    "should_create_deal": false,
+    "notes": "NOT A LEAD - generic test message, should NOT create deal. Second critical filter test."
+  },
+  {
+    "id": 6,
+    "name": "David Kim",
+    "email": "david@agency-ny.com",
+    "phone": "+1 212 555 0123",
+    "message": "We are a marketing agency in NY and looking for a white-label partner for AI automation for our clients. Let's discuss partnership and revenue share. Budget around $10000 for pilot.",
+    "expected_intent": "partnership",
+    "expected_priority": "medium",
+    "expected_budget": 10000,
+    "expected_currency": "USD",
+    "should_create_deal": true,
+    "notes": "Partnership with budget - should create deal"
+  },
+  {
+    "id": 7,
+    "name": "Anna Schmidt",
+    "email": "anna@berlin-startup.de",
+    "phone": "+49 30 123456",
+    "message": "Follow-up: same email as before, but now budget is 7000 EUR and we also need voice AI receptionist. Can you update our previous inquiry?",
+    "expected_intent": "pricing_request",
+    "expected_priority": "high",
+    "expected_budget": 7000,
+    "should_create_deal": true,
+    "notes": "DUPLICATE EMAIL - same as lead 1, should UPDATE existing contact, not create duplicate. Critical deduplication test."
+  },
+  {
+    "id": 8,
+    "name": "Elena Petrova",
+    "email": "elena@ecom-store.ru",
+    "message": "Need price monitoring for Wildberries competitors, similar to your project 3. How much for 100 SKUs? No urgent timeline, flexible.",
+    "expected_intent": "pricing_request",
+    "expected_priority": "medium",
+    "should_create_deal": true,
+    "notes": "Pricing request without explicit budget number - budget should be null, not hallucinated. Anti-hallucination test."
+  },
+  {
+    "id": 9,
+    "name": "James Wilson",
+    "email": "james@saas-startup.io",
+    "message": "Are you hiring? I'm looking for AI automation specialist role, 5 years experience.",
+    "expected_intent": "not_a_lead",
+    "expected_priority": "low",
+    "should_create_deal": false,
+    "notes": "Job application - not a lead, should NOT create deal. Third filter test (borderline)."
+  },
+  {
+    "id": 10,
+    "name": "Linda Müller",
+    "email": "linda@wellness-berlin.de",
+    "message": "We have 3 wellness studios, need WhatsApp booking bot. Budget 3000€, need it next month. Can you send proposal?",
+    "expected_intent": "pricing_request",
+    "expected_priority": "medium",
+    "expected_budget": 3000,
+    "expected_currency": "EUR",
+    "should_create_deal": true,
+    "notes": "Clear pricing request with budget and timeline next_month - good lead"
+  }
+]
