@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 180" width="100%" height="100%">
+  <defs>
+    <style>
+      .bone-bg { fill: #F2F0EB; }
+      .carbon-line { stroke: #1A1917; stroke-width: 1.5px; fill: none; }
+      .label-head { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; fill: #1A1917; letter-spacing: 0.08em; text-transform: uppercase; }
+      .label-sub { font-family: ui-monospace, 'JetBrains Mono', monospace; font-size: 10px; fill: #66635B; letter-spacing: 0.1em; text-transform: uppercase; }
+    </style>
+  </defs>
+
+  <rect width="1000" height="180" class="bone-bg"/>
+
+  <!-- Node 1: Lead Intake -->
+  <g transform="translate(30, 40)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 170,100 L 185,100 L 185,85" class="carbon-line"/>
+    <path d="M 185,15 L 185,0 L 170,0" class="carbon-line"/>
+    <path d="M 0,85 L 0,100 L 15,100" class="carbon-line"/>
+    <text x="92" y="42" class="label-head" text-anchor="middle">INBOUND INTAKE</text>
+    <text x="92" y="60" class="label-sub" text-anchor="middle">FORM / TELEGRAM / API</text>
+    <text x="92" y="76" class="label-sub" text-anchor="middle">[ NORMALIZED PAYLOAD ]</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="215" y1="90" x2="265" y2="90" class="carbon-line"/>
+  <polygon points="265,90 255,85 255,95" fill="#1A1917"/>
+
+  <!-- Node 2: Classifier -->
+  <g transform="translate(265, 40)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 170,100 L 185,100 L 185,85" class="carbon-line"/>
+    <path d="M 185,15 L 185,0 L 170,0" class="carbon-line"/>
+    <path d="M 0,85 L 0,100 L 15,100" class="carbon-line"/>
+    <text x="92" y="42" class="label-head" text-anchor="middle">LLM CLASSIFIER</text>
+    <text x="92" y="60" class="label-sub" text-anchor="middle">INTENT &amp; BUDGET</text>
+    <text x="92" y="76" class="label-sub" text-anchor="middle">[ SPAM &amp; DEDUP FILTER ]</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="450" y1="90" x2="500" y2="90" class="carbon-line"/>
+  <polygon points="500,90 490,85 490,95" fill="#1A1917"/>
+
+  <!-- Node 3: CRM Client -->
+  <g transform="translate(500, 40)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 185,100 L 200,100 L 200,85" class="carbon-line"/>
+    <path d="M 200,15 L 200,0 L 185,0" class="carbon-line"/>
+    <path d="M 0,85 L 0,100 L 15,100" class="carbon-line"/>
+    <text x="100" y="42" class="label-head" text-anchor="middle">HUBSPOT CRM ENGINE</text>
+    <text x="100" y="60" class="label-sub" text-anchor="middle">CONTACT DEDUPLICATION</text>
+    <text x="100" y="76" class="label-sub" text-anchor="middle">[ AUTO-DEAL CREATION ]</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="700" y1="90" x2="750" y2="90" class="carbon-line"/>
+  <polygon points="750,90 740,85 740,95" fill="#1A1917"/>
+
+  <!-- Node 4: Notifications -->
+  <g transform="translate(750, 40)">
+    <path d="M 0,15 L 0,0 L 15,0" class="carbon-line"/>
+    <path d="M 195,100 L 210,100 L 210,85" class="carbon-line"/>
+    <path d="M 210,15 L 210,0 L 195,0" class="carbon-line"/>
+    <path d="M 0,85 L 0,100 L 15,100" class="carbon-line"/>
+    <text x="105" y="42" class="label-head" text-anchor="middle">TELEGRAM ALERTS</text>
+    <text x="105" y="60" class="label-sub" text-anchor="middle">EXECUTIVE SUMMARY</text>
+    <text x="105" y="76" class="label-sub" text-anchor="middle">[ PRIORITY-TAGGED ]</text>
+  </g>
+</svg>
